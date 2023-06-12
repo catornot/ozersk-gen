@@ -46,6 +46,9 @@ fn on_vm_start() {
     
     
     AddCallback_OnClientConnected( void function( entity player ) {
+
+        if ( GetPlayerArray()[0] == player && !NSIsDedicated() )
+            return
         
         void functionref( entity ) send_data = void function( entity player ) {
             ClientCommand( player, "og_get_map_data START" )
